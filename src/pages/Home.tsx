@@ -398,8 +398,9 @@ export default function Home() {
             <Box
               sx={{
                 mt: 10,
-                mb: { xs: 12, md: 0 },
                 display: "flex",
+                flexDirection: { xs: "column", sm: "row" },
+                alignItems: "center",
                 flexWrap: "wrap",
                 gap: 2,
                 justifyContent: "center",
