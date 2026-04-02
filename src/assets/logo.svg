@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="grad-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer rounded square -->
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="#0a0a0f" stroke="url(#grad-stroke)" stroke-width="1.5"/>
+
+  <!-- J (left) -->
+  <text
+    x="8"
+    y="34"
+    font-family="Inter, system-ui, sans-serif"
+    font-weight="700"
+    font-size="26"
+    letter-spacing="-1"
+    fill="url(#grad)"
+  >JJ</text>
+</svg>
