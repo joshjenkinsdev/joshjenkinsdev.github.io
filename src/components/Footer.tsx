@@ -7,7 +7,7 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        borderTop: "1px solid rgba(124, 58, 237, 0.12)",
+        borderTop: "1px solid rgba(16, 185, 129, 0.12)",
         py: 4,
         px: 3,
       }}
@@ -26,7 +26,7 @@ export default function Footer() {
         <Typography
           variant="body2"
           sx={{
-            background: "linear-gradient(135deg, #a78bfa, #06b6d4)",
+            background: "linear-gradient(135deg, #6ee7b7, #34d399)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -47,7 +47,7 @@ export default function Footer() {
             size="small"
             sx={{
               color: "text.secondary",
-              "&:hover": { color: "#a78bfa" },
+              "&:hover": { color: "#6ee7b7" },
               transition: "color 0.2s ease",
             }}
           >
@@ -58,7 +58,7 @@ export default function Footer() {
             size="small"
             sx={{
               color: "text.secondary",
-              "&:hover": { color: "#a78bfa" },
+              "&:hover": { color: "#6ee7b7" },
               transition: "color 0.2s ease",
             }}
           >

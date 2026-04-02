@@ -1,4 +1,5 @@
-import { Box, Typography, TextField, Button, Stack, Divider, IconButton } from "@mui/material";
+import { useState } from "react";
+import { Box, Typography, TextField, Button, Stack, Divider, IconButton, Alert } from "@mui/material";
 import { motion } from "framer-motion";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -14,15 +15,44 @@ const itemVariants = {
 };
 
 export default function Contact() {
+  const [fields, setFields] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      const res = await fetch(`https://formspree.io/f/mvzvbwrl`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(fields),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setFields({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  const textFieldSx = {
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": { borderColor: "rgba(16, 185, 129, 0.25)" },
+      "&:hover fieldset": { borderColor: "rgba(16, 185, 129, 0.5)" },
+      "&.Mui-focused fieldset": { borderColor: "#059669" },
+    },
+    "& .MuiInputLabel-root.Mui-focused": { color: "#6ee7b7" },
+  };
+
   return (
-    <Box
-      sx={{
-        maxWidth: 680,
-        mx: "auto",
-        px: { xs: 2, sm: 4 },
-        py: 10,
-      }}
-    >
+    <Box sx={{ maxWidth: 680, mx: "auto", px: { xs: 2, sm: 4 }, py: 10 }}>
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -40,7 +70,7 @@ export default function Contact() {
           sx={{
             mt: 0.5,
             mb: 1,
-            background: "linear-gradient(135deg, #e2e8f0 40%, #a78bfa 100%)",
+            background: "linear-gradient(135deg, #e2e8f0 40%, #6ee7b7 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -55,9 +85,11 @@ export default function Contact() {
       </motion.div>
 
       <Box
+        component="form"
+        onSubmit={handleSubmit}
         sx={{
           background: "rgba(19, 19, 26, 0.85)",
-          border: "1px solid rgba(124, 58, 237, 0.2)",
+          border: "1px solid rgba(16, 185, 129, 0.2)",
           borderRadius: 3,
           p: { xs: 3, sm: 4 },
           backdropFilter: "blur(12px)",
@@ -65,45 +97,90 @@ export default function Contact() {
         }}
       >
         <Stack spacing={3}>
-          {(["Name", "Email", "Message"] as const).map((label, i) => (
-            <motion.div key={label} custom={i} variants={itemVariants} initial="hidden" animate="visible">
-              <TextField
-                label={label}
-                type={label === "Email" ? "email" : "text"}
-                multiline={label === "Message"}
-                rows={label === "Message" ? 5 : 1}
-                fullWidth
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": { borderColor: "rgba(124, 58, 237, 0.25)" },
-                    "&:hover fieldset": { borderColor: "rgba(124, 58, 237, 0.5)" },
-                    "&.Mui-focused fieldset": { borderColor: "#7c3aed" },
-                  },
-                  "& .MuiInputLabel-root.Mui-focused": { color: "#a78bfa" },
-                }}
-              />
-            </motion.div>
-          ))}
+          {status === "success" && (
+            <Alert
+              severity="success"
+              sx={{
+                background: "rgba(16, 185, 129, 0.1)",
+                border: "1px solid rgba(16, 185, 129, 0.3)",
+                color: "#6ee7b7",
+                "& .MuiAlert-icon": { color: "#6ee7b7" },
+              }}
+            >
+              Message sent! I'll get back to you soon.
+            </Alert>
+          )}
+          {status === "error" && (
+            <Alert severity="error" sx={{ background: "rgba(239, 68, 68, 0.1)", border: "1px solid rgba(239, 68, 68, 0.3)" }}>
+              Something went wrong. Please try again or email me directly.
+            </Alert>
+          )}
+
+          <motion.div custom={0} variants={itemVariants} initial="hidden" animate="visible">
+            <TextField
+              label="Name"
+              name="name"
+              value={fields.name}
+              onChange={handleChange}
+              required
+              fullWidth
+              sx={textFieldSx}
+            />
+          </motion.div>
+
+          <motion.div custom={1} variants={itemVariants} initial="hidden" animate="visible">
+            <TextField
+              label="Email"
+              name="email"
+              type="email"
+              value={fields.email}
+              onChange={handleChange}
+              required
+              fullWidth
+              sx={textFieldSx}
+            />
+          </motion.div>
+
+          <motion.div custom={2} variants={itemVariants} initial="hidden" animate="visible">
+            <TextField
+              label="Message"
+              name="message"
+              value={fields.message}
+              onChange={handleChange}
+              required
+              multiline
+              rows={5}
+              fullWidth
+              sx={textFieldSx}
+            />
+          </motion.div>
+
           <motion.div custom={3} variants={itemVariants} initial="hidden" animate="visible">
             <Button
+              type="submit"
               variant="contained"
               size="large"
               fullWidth
+              disabled={status === "loading"}
               sx={{
-                background: "linear-gradient(135deg, #7c3aed, #5b21b6)",
+                background: "linear-gradient(135deg, #059669, #047857)",
                 py: 1.5,
                 fontWeight: 600,
                 fontSize: "1rem",
-                boxShadow: "0 0 30px rgba(124, 58, 237, 0.25)",
+                boxShadow: "0 0 30px rgba(16, 185, 129, 0.25)",
                 "&:hover": {
-                  background: "linear-gradient(135deg, #8b5cf6, #7c3aed)",
-                  boxShadow: "0 0 50px rgba(124, 58, 237, 0.45)",
+                  background: "linear-gradient(135deg, #10b981, #059669)",
+                  boxShadow: "0 0 50px rgba(16, 185, 129, 0.45)",
                   transform: "translateY(-2px)",
+                },
+                "&.Mui-disabled": {
+                  background: "rgba(16, 185, 129, 0.2)",
+                  color: "rgba(110, 231, 183, 0.5)",
                 },
                 transition: "all 0.3s ease",
               }}
             >
-              Send Message
+              {status === "loading" ? "Sending…" : "Send Message"}
             </Button>
           </motion.div>
         </Stack>
@@ -114,11 +191,8 @@ export default function Contact() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.5 }}
       >
-        <Divider sx={{ borderColor: "rgba(124, 58, 237, 0.15)", mb: 3 }} />
-        <Typography
-          variant="body2"
-          sx={{ color: "text.secondary", mb: 2.5, textAlign: "center" }}
-        >
+        <Divider sx={{ borderColor: "rgba(16, 185, 129, 0.15)", mb: 3 }} />
+        <Typography variant="body2" sx={{ color: "text.secondary", mb: 2.5, textAlign: "center" }}>
           Or find me on
         </Typography>
         <Stack direction="row" spacing={2} justifyContent="center">
@@ -134,13 +208,13 @@ export default function Contact() {
               rel="noopener noreferrer"
               sx={{
                 color: "text.secondary",
-                border: "1px solid rgba(124, 58, 237, 0.2)",
+                border: "1px solid rgba(16, 185, 129, 0.2)",
                 p: 1.5,
                 borderRadius: 2,
                 "&:hover": {
-                  color: "#a78bfa",
-                  borderColor: "rgba(124, 58, 237, 0.5)",
-                  background: "rgba(124, 58, 237, 0.08)",
+                  color: "#6ee7b7",
+                  borderColor: "rgba(16, 185, 129, 0.5)",
+                  background: "rgba(16, 185, 129, 0.08)",
                   transform: "translateY(-3px)",
                 },
                 transition: "all 0.25s ease",

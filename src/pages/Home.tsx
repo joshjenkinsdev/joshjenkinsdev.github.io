@@ -9,10 +9,10 @@ import CodeIcon from "@mui/icons-material/Code";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 
 const TITLES = [
-  "Software Engineer",
   "Full-Stack Developer",
-  "AI Engineer",
-  "ML Explorer"
+  "Software Engineer",
+  "Data Scientist",
+  "Technical Architect",
 ];
 
 const SKILLS = [
@@ -98,9 +98,9 @@ function SectionHeading({ icon, label }: { icon: React.ReactNode; label: string 
           width: 40,
           height: 40,
           borderRadius: "10px",
-          background: "rgba(124, 58, 237, 0.15)",
-          border: "1px solid rgba(124, 58, 237, 0.3)",
-          color: "#a78bfa",
+          background: "rgba(16, 185, 129, 0.15)",
+          border: "1px solid rgba(16, 185, 129, 0.3)",
+          color: "#6ee7b7",
         }}
       >
         {icon}
@@ -109,7 +109,7 @@ function SectionHeading({ icon, label }: { icon: React.ReactNode; label: string 
         variant="h4"
         fontWeight={700}
         sx={{
-          background: "linear-gradient(135deg, #e2e8f0 30%, #a78bfa 100%)",
+          background: "linear-gradient(135deg, #e2e8f0 30%, #6ee7b7 100%)",
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",
@@ -179,7 +179,7 @@ export default function Home() {
             width: "700px",
             height: "700px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%)",
             top: "-250px",
             right: "-200px",
             animation: "float 8s ease-in-out infinite",
@@ -192,7 +192,7 @@ export default function Home() {
             width: "500px",
             height: "500px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, transparent 70%)",
             bottom: "-150px",
             left: "-150px",
             animation: "float 11s ease-in-out infinite reverse",
@@ -204,8 +204,8 @@ export default function Home() {
             position: "absolute",
             inset: 0,
             backgroundImage: `
-              linear-gradient(rgba(124, 58, 237, 0.04) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(124, 58, 237, 0.04) 1px, transparent 1px)
+              linear-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(16, 185, 129, 0.04) 1px, transparent 1px)
             `,
             backgroundSize: "60px 60px",
             pointerEvents: "none",
@@ -239,7 +239,7 @@ export default function Home() {
               sx={{
                 mt: 1,
                 mb: 2,
-                background: "linear-gradient(135deg, #e2e8f0 30%, #a78bfa 65%, #06b6d4 100%)",
+                background: "linear-gradient(135deg, #e2e8f0 30%, #6ee7b7 65%, #34d399 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -270,7 +270,7 @@ export default function Home() {
                 <Typography
                   variant="h5"
                   sx={{
-                    color: "#a78bfa",
+                    color: "#6ee7b7",
                     fontWeight: 600,
                     minWidth: { xs: "220px", sm: "280px" },
                     textAlign: "left",
@@ -283,7 +283,7 @@ export default function Home() {
                       display: "inline-block",
                       width: "3px",
                       height: "1.2em",
-                      background: "#a78bfa",
+                      background: "#6ee7b7",
                       ml: "2px",
                       verticalAlign: "text-bottom",
                       animation: "blink 1s step-end infinite",
@@ -323,15 +323,15 @@ export default function Home() {
                 to="/projects"
                 size="large"
                 sx={{
-                  background: "linear-gradient(135deg, #7c3aed, #5b21b6)",
+                  background: "linear-gradient(135deg, #059669, #047857)",
                   px: 4,
                   py: 1.5,
                   fontWeight: 600,
                   fontSize: "1rem",
-                  boxShadow: "0 0 30px rgba(124, 58, 237, 0.35)",
+                  boxShadow: "0 0 30px rgba(16, 185, 129, 0.35)",
                   "&:hover": {
-                    background: "linear-gradient(135deg, #8b5cf6, #7c3aed)",
-                    boxShadow: "0 0 50px rgba(124, 58, 237, 0.55)",
+                    background: "linear-gradient(135deg, #10b981, #059669)",
+                    boxShadow: "0 0 50px rgba(16, 185, 129, 0.55)",
                     transform: "translateY(-2px)",
                   },
                   transition: "all 0.3s ease",
@@ -345,15 +345,15 @@ export default function Home() {
                 to="/contact"
                 size="large"
                 sx={{
-                  borderColor: "rgba(124, 58, 237, 0.5)",
-                  color: "#a78bfa",
+                  borderColor: "rgba(16, 185, 129, 0.5)",
+                  color: "#6ee7b7",
                   px: 4,
                   py: 1.5,
                   fontWeight: 600,
                   fontSize: "1rem",
                   "&:hover": {
-                    borderColor: "#a78bfa",
-                    background: "rgba(124, 58, 237, 0.1)",
+                    borderColor: "#6ee7b7",
+                    background: "rgba(16, 185, 129, 0.1)",
                     transform: "translateY(-2px)",
                   },
                   transition: "all 0.3s ease",
@@ -376,20 +376,65 @@ export default function Home() {
                   <Chip
                     label={skill}
                     sx={{
-                      background: "rgba(124, 58, 237, 0.08)",
-                      border: "1px solid rgba(124, 58, 237, 0.25)",
-                      color: "#a78bfa",
+                      background: "rgba(16, 185, 129, 0.08)",
+                      border: "1px solid rgba(16, 185, 129, 0.25)",
+                      color: "#6ee7b7",
                       fontWeight: 500,
                       fontSize: "0.85rem",
                       "&:hover": {
-                        background: "rgba(124, 58, 237, 0.18)",
-                        borderColor: "#a78bfa",
+                        background: "rgba(16, 185, 129, 0.18)",
+                        borderColor: "#6ee7b7",
                       },
                       transition: "all 0.2s ease",
                       cursor: "default",
                     }}
                   />
                 </motion.div>
+              ))}
+            </Box>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <Box
+              sx={{
+                mt: 20,
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 2,
+                justifyContent: "center",
+              }}
+            >
+              {[
+                { label: "About Me", id: "about" },
+                { label: "Experience", id: "experience" },
+                { label: "Education", id: "education" },
+                { label: "Skills", id: "skills" },
+              ].map((item) => (
+                <Button
+                  key={item.id}
+                  size="small"
+                  onClick={() =>
+                    document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  sx={{
+                    borderRadius: "8px",
+                    border: "1px solid rgba(16, 185, 129, 0.3)",
+                    color: "rgba(110, 231, 183, 0.75)",
+                    px: 7,
+                    py: 2,
+                    fontSize: "1.0rem",
+                    fontWeight: 500,
+                    background: "rgba(16, 185, 129, .05)",
+                    "&:hover": {
+                      background: "rgba(16, 185, 129, 0.12)",
+                      borderColor: "#6ee7b7",
+                      color: "#6ee7b7",
+                    },
+                    transition: "all 0.2s ease",
+                  }}
+                >
+                  {item.label}
+                </Button>
               ))}
             </Box>
           </motion.div>
@@ -400,12 +445,13 @@ export default function Home() {
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ArrowDownwardIcon sx={{ color: "rgba(167, 139, 250, 0.4)", fontSize: 26 }} />
+          <ArrowDownwardIcon sx={{ color: "rgba(110, 231, 183, 0.4)", fontSize: 75 }} />
         </motion.div>
       </Box>
 
       {/* ── ABOUT ── */}
       <Box
+        id="about"
         component="section"
         sx={{
           width: "100%",
@@ -424,7 +470,7 @@ export default function Home() {
           <Box
             sx={{
               background: "rgba(255,255,255,0.025)",
-              border: "1px solid rgba(124, 58, 237, 0.18)",
+              border: "1px solid rgba(16, 185, 129, 0.18)",
               borderRadius: "16px",
               p: { xs: 3, sm: 4 },
               backdropFilter: "blur(8px)",
@@ -438,20 +484,22 @@ export default function Home() {
                 fontSize: "1.05rem",
               }}
             >
-              I'm a versatile software engineer with production experience spanning government
-              defense contracting, academic research, and commercial product development. I'm a
-              clear communicator across engineering and business teams who puts an emphasis on user
-              experience and takes a methodical approach to building reliable systems. I have
-              experience across backend architecture, frontend development, and AI/ML integration.
+              Hi, I'm Josh. My journey into technology started in elementary school, where I was the "go-to" 
+              student for troubleshooting classroom tech issues. That early curiosity evolved into a passion 
+              for software engineering - a field that allows me to build impactful tools from the ground up 
+              and deploy them to the world with a single click. Today, as a driven software engineer, I focus 
+              on creating seamless digital experiences and solving complex problems with clean code. I'm always 
+              looking for the next challenge to build, learn, and grow from. Thanks for stopping by!
             </Typography>
           </Box>
         </motion.div>
       </Box>
 
-      <Divider sx={{ width: "100%", maxWidth: 860, borderColor: "rgba(124, 58, 237, 0.12)" }} />
+      <Divider sx={{ width: "100%", maxWidth: 860, borderColor: "rgba(16, 185, 129, 0.12)" }} />
 
       {/* ── EXPERIENCE ── */}
       <Box
+        id="experience"
         component="section"
         sx={{
           width: "100%",
@@ -482,14 +530,14 @@ export default function Home() {
               <Box
                 sx={{
                   background: "rgba(255,255,255,0.025)",
-                  border: "1px solid rgba(124, 58, 237, 0.18)",
+                  border: "1px solid rgba(16, 185, 129, 0.18)",
                   borderRadius: "16px",
                   p: { xs: 3, sm: 4 },
                   backdropFilter: "blur(8px)",
                   transition: "border-color 0.25s ease, box-shadow 0.25s ease",
                   "&:hover": {
-                    borderColor: "rgba(124, 58, 237, 0.4)",
-                    boxShadow: "0 4px 32px rgba(124, 58, 237, 0.1)",
+                    borderColor: "rgba(16, 185, 129, 0.4)",
+                    boxShadow: "0 4px 32px rgba(16, 185, 129, 0.1)",
                   },
                 }}
               >
@@ -507,7 +555,7 @@ export default function Home() {
                     <Typography variant="h6" fontWeight={700} sx={{ color: "#e2e8f0" }}>
                       {job.role}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: "#a78bfa", fontWeight: 500 }}>
+                    <Typography variant="body2" sx={{ color: "#6ee7b7", fontWeight: 500 }}>
                       {job.company}
                     </Typography>
                   </Box>
@@ -515,8 +563,8 @@ export default function Home() {
                     label={job.period}
                     size="small"
                     sx={{
-                      background: "rgba(124, 58, 237, 0.1)",
-                      border: "1px solid rgba(124, 58, 237, 0.25)",
+                      background: "rgba(16, 185, 129, 0.1)",
+                      border: "1px solid rgba(16, 185, 129, 0.25)",
                       color: "text.secondary",
                       fontWeight: 500,
                       fontSize: "0.75rem",
@@ -534,7 +582,7 @@ export default function Home() {
                         lineHeight: 1.8,
                         fontSize: "0.95rem",
                         mb: 0.5,
-                        "&::marker": { color: "rgba(124, 58, 237, 0.5)" },
+                        "&::marker": { color: "rgba(16, 185, 129, 0.5)" },
                       }}
                     >
                       {b}
@@ -547,10 +595,11 @@ export default function Home() {
         </Box>
       </Box>
 
-      <Divider sx={{ width: "100%", maxWidth: 860, borderColor: "rgba(124, 58, 237, 0.12)" }} />
+      <Divider sx={{ width: "100%", maxWidth: 860, borderColor: "rgba(16, 185, 129, 0.12)" }} />
 
       {/* ── EDUCATION ── */}
       <Box
+        id="education"
         component="section"
         sx={{
           width: "100%",
@@ -569,7 +618,7 @@ export default function Home() {
           <Box
             sx={{
               background: "rgba(255,255,255,0.025)",
-              border: "1px solid rgba(124, 58, 237, 0.18)",
+              border: "1px solid rgba(16, 185, 129, 0.18)",
               borderRadius: "16px",
               p: { xs: 3, sm: 4 },
               backdropFilter: "blur(8px)",
@@ -580,8 +629,8 @@ export default function Home() {
               gap: 2,
               transition: "border-color 0.25s ease, box-shadow 0.25s ease",
               "&:hover": {
-                borderColor: "rgba(124, 58, 237, 0.4)",
-                boxShadow: "0 4px 32px rgba(124, 58, 237, 0.1)",
+                borderColor: "rgba(16, 185, 129, 0.4)",
+                boxShadow: "0 4px 32px rgba(16, 185, 129, 0.1)",
               },
             }}
           >
@@ -589,7 +638,7 @@ export default function Home() {
               <Typography variant="h6" fontWeight={700} sx={{ color: "#e2e8f0" }}>
                 California Polytechnic State University, Pomona
               </Typography>
-              <Typography variant="body2" sx={{ color: "#a78bfa", fontWeight: 500, mt: 0.5 }}>
+              <Typography variant="body2" sx={{ color: "#6ee7b7", fontWeight: 500, mt: 0.5 }}>
                 B.S. Computer Science &nbsp;·&nbsp; Minor: Data Science
               </Typography>
             </Box>
@@ -597,8 +646,8 @@ export default function Home() {
               label="Spring 2024"
               size="small"
               sx={{
-                background: "rgba(124, 58, 237, 0.1)",
-                border: "1px solid rgba(124, 58, 237, 0.25)",
+                background: "rgba(16, 185, 129, 0.1)",
+                border: "1px solid rgba(16, 185, 129, 0.25)",
                 color: "text.secondary",
                 fontWeight: 500,
                 fontSize: "0.75rem",
@@ -609,10 +658,11 @@ export default function Home() {
         </motion.div>
       </Box>
 
-      <Divider sx={{ width: "100%", maxWidth: 860, borderColor: "rgba(124, 58, 237, 0.12)" }} />
+      <Divider sx={{ width: "100%", maxWidth: 860, borderColor: "rgba(16, 185, 129, 0.12)" }} />
 
       {/* ── SKILLS ── */}
       <Box
+        id="skills"
         component="section"
         sx={{
           width: "100%",
@@ -643,7 +693,7 @@ export default function Home() {
               <Box
                 sx={{
                   background: "rgba(255,255,255,0.025)",
-                  border: "1px solid rgba(124, 58, 237, 0.18)",
+                  border: "1px solid rgba(16, 185, 129, 0.18)",
                   borderRadius: "16px",
                   p: { xs: 3, sm: 4 },
                   backdropFilter: "blur(8px)",
@@ -652,7 +702,7 @@ export default function Home() {
                 <Typography
                   variant="overline"
                   sx={{
-                    color: "rgba(167, 139, 250, 0.7)",
+                    color: "rgba(110, 231, 183, 0.7)",
                     letterSpacing: 2,
                     fontSize: "0.7rem",
                     fontWeight: 600,
@@ -668,14 +718,14 @@ export default function Home() {
                       key={item}
                       label={item}
                       sx={{
-                        background: "rgba(124, 58, 237, 0.08)",
-                        border: "1px solid rgba(124, 58, 237, 0.22)",
-                        color: "#c4b5fd",
+                        background: "rgba(16, 185, 129, 0.08)",
+                        border: "1px solid rgba(16, 185, 129, 0.22)",
+                        color: "#a7f3d0",
                         fontWeight: 500,
                         fontSize: "0.82rem",
                         "&:hover": {
-                          background: "rgba(124, 58, 237, 0.18)",
-                          borderColor: "#a78bfa",
+                          background: "rgba(16, 185, 129, 0.18)",
+                          borderColor: "#6ee7b7",
                         },
                         transition: "all 0.2s ease",
                         cursor: "default",

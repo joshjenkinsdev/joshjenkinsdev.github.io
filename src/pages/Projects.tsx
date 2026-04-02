@@ -63,7 +63,7 @@ export default function Projects() {
           sx={{
             mt: 0.5,
             mb: 1,
-            background: "linear-gradient(135deg, #e2e8f0 40%, #a78bfa 100%)",
+            background: "linear-gradient(135deg, #e2e8f0 40%, #6ee7b7 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -95,15 +95,15 @@ export default function Projects() {
                 display: "flex",
                 flexDirection: "column",
                 background: "rgba(19, 19, 26, 0.85)",
-                border: "1px solid rgba(124, 58, 237, 0.15)",
+                border: "1px solid rgba(16, 185, 129, 0.15)",
                 backdropFilter: "blur(12px)",
                 position: "relative",
                 overflow: "hidden",
                 transition: "all 0.3s ease",
                 "&:hover": {
-                  border: "1px solid rgba(124, 58, 237, 0.4)",
+                  border: "1px solid rgba(16, 185, 129, 0.4)",
                   transform: "translateY(-8px)",
-                  boxShadow: "0 24px 60px rgba(124, 58, 237, 0.2)",
+                  boxShadow: "0 24px 60px rgba(16, 185, 129, 0.2)",
                 },
                 "&::before": {
                   content: '""',
@@ -137,8 +137,8 @@ export default function Projects() {
                       label={t}
                       size="small"
                       sx={{
-                        background: "rgba(124, 58, 237, 0.08)",
-                        border: "1px solid rgba(124, 58, 237, 0.2)",
+                        background: "rgba(16, 185, 129, 0.08)",
+                        border: "1px solid rgba(16, 185, 129, 0.2)",
                         color: "text.secondary",
                         fontSize: "0.72rem",
                         height: 24,
@@ -155,11 +155,11 @@ export default function Projects() {
                   rel="noopener noreferrer"
                   endIcon={<OpenInNewIcon sx={{ fontSize: "0.9rem !important" }} />}
                   sx={{
-                    color: "#a78bfa",
+                    color: "#6ee7b7",
                     fontWeight: 600,
                     fontSize: "0.85rem",
                     p: 0,
-                    "&:hover": { color: "#c4b5fd", background: "transparent" },
+                    "&:hover": { color: "#a7f3d0", background: "transparent" },
                     transition: "color 0.2s ease",
                   }}
                 >
