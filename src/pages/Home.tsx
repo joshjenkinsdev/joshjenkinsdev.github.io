@@ -397,7 +397,7 @@ export default function Home() {
           <motion.div variants={itemVariants}>
             <Box
               sx={{
-                mt: 20,
+                mt: 10,
                 display: "flex",
                 flexWrap: "wrap",
                 gap: 2,

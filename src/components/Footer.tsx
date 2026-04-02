@@ -54,7 +54,9 @@ export default function Footer() {
             <GitHubIcon fontSize="small" />
           </IconButton>
           <IconButton
-            href="#"
+            href="https://www.linkedin.com/in/joshjenkins2/"
+            target="_blank"
+            rel="noopener noreferrer"
             size="small"
             sx={{
               color: "text.secondary",
