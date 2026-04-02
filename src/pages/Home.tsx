@@ -398,6 +398,7 @@ export default function Home() {
             <Box
               sx={{
                 mt: 10,
+                mb: { xs: 12, md: 0 },
                 display: "flex",
                 flexWrap: "wrap",
                 gap: 2,
@@ -441,11 +442,11 @@ export default function Home() {
         </motion.div>
 
         <motion.div
-          style={{ position: "absolute", bottom: 24, zIndex: 1 }}
+          style={{ position: "absolute", bottom: 12, zIndex: 1 }}
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ArrowDownwardIcon sx={{ color: "rgba(110, 231, 183, 0.4)", fontSize: 75 }} />
+          <ArrowDownwardIcon sx={{ color: "rgba(110, 231, 183, 0.4)", fontSize: { xs: 45, md: 75 } }} />
         </motion.div>
       </Box>
 
