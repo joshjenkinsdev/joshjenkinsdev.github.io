@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Box, Typography, TextField, Button, Stack, Divider, IconButton, Alert } from "@mui/material";
 import { motion } from "framer-motion";
+import { useTheme } from "@mui/material/styles";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
@@ -17,6 +18,18 @@ const itemVariants = {
 export default function Contact() {
   const [fields, setFields] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
+
+  const accent = isDark ? "#6ee7b7" : "#818cf8";
+  const accentRgb = isDark ? "16, 185, 129" : "79, 70, 229";
+  const accentMain = isDark ? "#059669" : "#4f46e5";
+  const accentDark = isDark ? "#047857" : "#3730a3";
+  const accentHover = isDark ? "#10b981" : "#6366f1";
+  const headingGradient = isDark
+    ? "linear-gradient(135deg, #e2e8f0 0%, #10b981 30%)"
+    : "linear-gradient(135deg, #0f172a 0%, #4f46e5 30%)";
+  const formBg = isDark ? "rgba(19, 19, 26, 0.85)" : "rgba(253, 248, 241, 0.92)";
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -44,11 +57,12 @@ export default function Contact() {
 
   const textFieldSx = {
     "& .MuiOutlinedInput-root": {
-      "& fieldset": { borderColor: "rgba(16, 185, 129, 0.25)" },
-      "&:hover fieldset": { borderColor: "rgba(16, 185, 129, 0.5)" },
-      "&.Mui-focused fieldset": { borderColor: "#059669" },
+      backgroundColor: isDark ? undefined : "transparent",
+      "& fieldset": { borderColor: `rgba(${accentRgb}, 0.25)` },
+      "&:hover fieldset": { borderColor: `rgba(${accentRgb}, 0.5)` },
+      "&.Mui-focused fieldset": { borderColor: accentMain },
     },
-    "& .MuiInputLabel-root.Mui-focused": { color: "#6ee7b7" },
+    "& .MuiInputLabel-root.Mui-focused": { color: accent },
   };
 
   return (
@@ -70,7 +84,7 @@ export default function Contact() {
           sx={{
             mt: 0.5,
             mb: 1,
-            background: "linear-gradient(135deg, #e2e8f0 40%, #6ee7b7 100%)",
+            background: headingGradient,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -88,8 +102,8 @@ export default function Contact() {
         component="form"
         onSubmit={handleSubmit}
         sx={{
-          background: "rgba(19, 19, 26, 0.85)",
-          border: "1px solid rgba(16, 185, 129, 0.2)",
+          background: formBg,
+          border: `1px solid rgba(${accentRgb}, 0.2)`,
           borderRadius: 3,
           p: { xs: 3, sm: 4 },
           backdropFilter: "blur(12px)",
@@ -101,17 +115,23 @@ export default function Contact() {
             <Alert
               severity="success"
               sx={{
-                background: "rgba(16, 185, 129, 0.1)",
-                border: "1px solid rgba(16, 185, 129, 0.3)",
-                color: "#6ee7b7",
-                "& .MuiAlert-icon": { color: "#6ee7b7" },
+                background: `rgba(${accentRgb}, 0.1)`,
+                border: `1px solid rgba(${accentRgb}, 0.3)`,
+                color: accent,
+                "& .MuiAlert-icon": { color: accent },
               }}
             >
               Message sent! I'll get back to you soon.
             </Alert>
           )}
           {status === "error" && (
-            <Alert severity="error" sx={{ background: "rgba(239, 68, 68, 0.1)", border: "1px solid rgba(239, 68, 68, 0.3)" }}>
+            <Alert
+              severity="error"
+              sx={{
+                background: "rgba(239, 68, 68, 0.1)",
+                border: "1px solid rgba(239, 68, 68, 0.3)",
+              }}
+            >
               Something went wrong. Please try again or email me directly.
             </Alert>
           )}
@@ -163,19 +183,19 @@ export default function Contact() {
               fullWidth
               disabled={status === "loading"}
               sx={{
-                background: "linear-gradient(135deg, #059669, #047857)",
+                background: `linear-gradient(135deg, ${accentMain}, ${accentDark})`,
                 py: 1.5,
                 fontWeight: 600,
                 fontSize: "1rem",
-                boxShadow: "0 0 30px rgba(16, 185, 129, 0.25)",
+                boxShadow: `0 0 30px rgba(${accentRgb}, 0.25)`,
                 "&:hover": {
-                  background: "linear-gradient(135deg, #10b981, #059669)",
-                  boxShadow: "0 0 50px rgba(16, 185, 129, 0.45)",
+                  background: `linear-gradient(135deg, ${accentHover}, ${accentMain})`,
+                  boxShadow: `0 0 50px rgba(${accentRgb}, 0.4)`,
                   transform: "translateY(-2px)",
                 },
                 "&.Mui-disabled": {
-                  background: "rgba(16, 185, 129, 0.2)",
-                  color: "rgba(110, 231, 183, 0.5)",
+                  background: `rgba(${accentRgb}, 0.2)`,
+                  color: `rgba(${accentRgb === "16, 185, 129" ? "110, 231, 183" : "129, 140, 248"}, 0.5)`,
                 },
                 transition: "all 0.3s ease",
               }}
@@ -191,7 +211,7 @@ export default function Contact() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.5 }}
       >
-        <Divider sx={{ borderColor: "rgba(16, 185, 129, 0.15)", mb: 3 }} />
+        <Divider sx={{ borderColor: `rgba(${accentRgb}, 0.15)`, mb: 3 }} />
         <Typography variant="body2" sx={{ color: "text.secondary", mb: 2.5, textAlign: "center" }}>
           Or find me on
         </Typography>
@@ -208,13 +228,13 @@ export default function Contact() {
               rel="noopener noreferrer"
               sx={{
                 color: "text.secondary",
-                border: "1px solid rgba(16, 185, 129, 0.2)",
+                border: `1px solid rgba(${accentRgb}, 0.2)`,
                 p: 1.5,
                 borderRadius: 2,
                 "&:hover": {
-                  color: "#6ee7b7",
-                  borderColor: "rgba(16, 185, 129, 0.5)",
-                  background: "rgba(16, 185, 129, 0.08)",
+                  color: accent,
+                  borderColor: `rgba(${accentRgb}, 0.5)`,
+                  background: `rgba(${accentRgb}, 0.08)`,
                   transform: "translateY(-3px)",
                 },
                 transition: "all 0.25s ease",

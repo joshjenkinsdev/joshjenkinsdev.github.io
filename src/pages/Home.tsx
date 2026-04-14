@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Box, Typography, Button, Stack, Chip, Divider } from "@mui/material";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTheme } from "@mui/material/styles";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
 import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined";
@@ -9,10 +10,10 @@ import CodeIcon from "@mui/icons-material/Code";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 
 const TITLES = [
-  "Full-Stack Developer",
   "Software Engineer",
-  "Data Scientist",
   "Technical Architect",
+  "Full-Stack Developer",
+  "Data Scientist",
 ];
 
 const SKILLS = [
@@ -88,6 +89,15 @@ const cardVariants = {
 };
 
 function SectionHeading({ icon, label }: { icon: React.ReactNode; label: string }) {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
+
+  const accent = isDark ? "#6ee7b7" : "#4f46e5";
+  const accentRgb = isDark ? "16, 185, 129" : "79, 70, 229";
+  const headingGradient = isDark
+    ? "linear-gradient(135deg, #e2e8f0 0%, #6ee7b7 30%)"
+    : "linear-gradient(135deg, #0f172a 0%, #4f46e5 30%)";
+
   return (
     <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, mb: 5 }}>
       <Box
@@ -98,9 +108,9 @@ function SectionHeading({ icon, label }: { icon: React.ReactNode; label: string 
           width: 40,
           height: 40,
           borderRadius: "10px",
-          background: "rgba(16, 185, 129, 0.15)",
-          border: "1px solid rgba(16, 185, 129, 0.3)",
-          color: "#6ee7b7",
+          background: `rgba(${accentRgb}, 0.12)`,
+          border: `1px solid rgba(${accentRgb}, 0.3)`,
+          color: accent,
         }}
       >
         {icon}
@@ -109,7 +119,7 @@ function SectionHeading({ icon, label }: { icon: React.ReactNode; label: string 
         variant="h4"
         fontWeight={700}
         sx={{
-          background: "linear-gradient(135deg, #e2e8f0 30%, #6ee7b7 100%)",
+          background: headingGradient,
           WebkitBackgroundClip: "text",
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",
@@ -126,6 +136,22 @@ export default function Home() {
   const [titleIndex, setTitleIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
+
+  // Color palette based on mode
+  const accent = isDark ? "#6ee7b7" : "#818cf8";
+  const accentRgb = isDark ? "16, 185, 129" : "79, 70, 229";
+  const accentSecRgb = isDark ? "52, 211, 153" : "129, 140, 248";
+  const accentMain = isDark ? "#059669" : "#4f46e5";
+  const accentDark = isDark ? "#047857" : "#3730a3";
+  const accentHover = isDark ? "#10b981" : "#6366f1";
+  const headingText = isDark ? "#e2e8f0" : "#0f172a";
+  const cardBg = isDark ? "rgba(255,255,255,0.025)" : "rgba(253, 248, 241, 0.85)";
+  const cardBorder = isDark ? "rgba(16, 185, 129, 0.18)" : "rgba(79, 70, 229, 0.15)";
+  const heroGradient = isDark
+    ? "linear-gradient(135deg, #e2e8f0 0%, #10b981 60%)"
+    : "linear-gradient(135deg, #0f172a 0%, #4f46e5 60%)";
 
   useEffect(() => {
     const current = TITLES[titleIndex];
@@ -179,7 +205,7 @@ export default function Home() {
             width: "700px",
             height: "700px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 70%)",
+            background: `radial-gradient(circle, rgba(${accentRgb}, 0.1) 0%, transparent 70%)`,
             top: "-250px",
             right: "-200px",
             animation: "float 8s ease-in-out infinite",
@@ -192,7 +218,7 @@ export default function Home() {
             width: "500px",
             height: "500px",
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(52, 211, 153, 0.08) 0%, transparent 70%)",
+            background: `radial-gradient(circle, rgba(${accentSecRgb}, 0.07) 0%, transparent 70%)`,
             bottom: "-150px",
             left: "-150px",
             animation: "float 11s ease-in-out infinite reverse",
@@ -204,10 +230,11 @@ export default function Home() {
             position: "absolute",
             inset: 0,
             backgroundImage: `
-              linear-gradient(rgba(16, 185, 129, 0.04) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(16, 185, 129, 0.04) 1px, transparent 1px)
+              linear-gradient(rgba(${accentRgb}, 0.04) 2px, transparent 2px),
+              linear-gradient(90deg, rgba(${accentRgb}, 0.04) 2px, transparent 2px)
             `,
             backgroundSize: "60px 60px",
+            backgroundPosition: "center",
             pointerEvents: "none",
           }}
         />
@@ -239,7 +266,7 @@ export default function Home() {
               sx={{
                 mt: 1,
                 mb: 2,
-                background: "linear-gradient(135deg, #e2e8f0 30%, #6ee7b7 65%, #34d399 100%)",
+                background: heroGradient,
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -263,14 +290,14 @@ export default function Home() {
                 flexWrap: "wrap",
               }}
             >
-              <Typography variant="h5" sx={{ color: "text.secondary", fontWeight: 400 }}>
+              <Typography variant="h5" sx={{ color: "text.secondary", fontWeight: 400, ml: 6 }}>
                 I'm a
               </Typography>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <Typography
                   variant="h5"
                   sx={{
-                    color: "#6ee7b7",
+                    color: accent,
                     fontWeight: 600,
                     minWidth: { xs: "220px", sm: "280px" },
                     textAlign: "left",
@@ -283,7 +310,7 @@ export default function Home() {
                       display: "inline-block",
                       width: "3px",
                       height: "1.2em",
-                      background: "#6ee7b7",
+                      background: accent,
                       ml: "2px",
                       verticalAlign: "text-bottom",
                       animation: "blink 1s step-end infinite",
@@ -323,15 +350,16 @@ export default function Home() {
                 to="/projects"
                 size="large"
                 sx={{
-                  background: "linear-gradient(135deg, #059669, #047857)",
-                  px: 4,
+                  background: `linear-gradient(135deg, ${accentMain}, ${accentDark})`,
+                  px: 2,
                   py: 1.5,
+                  width: "160px",
                   fontWeight: 600,
                   fontSize: "1rem",
-                  boxShadow: "0 0 30px rgba(16, 185, 129, 0.35)",
+                  boxShadow: `0 0 30px rgba(${accentRgb}, 0.3)`,
                   "&:hover": {
-                    background: "linear-gradient(135deg, #10b981, #059669)",
-                    boxShadow: "0 0 50px rgba(16, 185, 129, 0.55)",
+                    background: `linear-gradient(135deg, ${accentHover}, ${accentMain})`,
+                    boxShadow: `0 0 50px rgba(${accentRgb}, 0.5)`,
                     transform: "translateY(-2px)",
                   },
                   transition: "all 0.3s ease",
@@ -345,15 +373,16 @@ export default function Home() {
                 to="/contact"
                 size="large"
                 sx={{
-                  borderColor: "rgba(16, 185, 129, 0.5)",
-                  color: "#6ee7b7",
-                  px: 4,
+                  borderColor: `rgba(${accentRgb}, 0.5)`,
+                  color: accent,
+                  px: 2,
                   py: 1.5,
+                  width: "160px",
                   fontWeight: 600,
                   fontSize: "1rem",
                   "&:hover": {
-                    borderColor: "#6ee7b7",
-                    background: "rgba(16, 185, 129, 0.1)",
+                    borderColor: accent,
+                    background: `rgba(${accentRgb}, 0.08)`,
                     transform: "translateY(-2px)",
                   },
                   transition: "all 0.3s ease",
@@ -376,14 +405,14 @@ export default function Home() {
                   <Chip
                     label={skill}
                     sx={{
-                      background: "rgba(16, 185, 129, 0.08)",
-                      border: "1px solid rgba(16, 185, 129, 0.25)",
-                      color: "#6ee7b7",
+                      background: `rgba(${accentRgb}, 0.08)`,
+                      border: `1px solid rgba(${accentRgb}, 0.25)`,
+                      color: accent,
                       fontWeight: 500,
                       fontSize: "0.85rem",
                       "&:hover": {
-                        background: "rgba(16, 185, 129, 0.18)",
-                        borderColor: "#6ee7b7",
+                        background: `rgba(${accentRgb}, 0.16)`,
+                        borderColor: accent,
                       },
                       transition: "all 0.2s ease",
                       cursor: "default",
@@ -420,17 +449,18 @@ export default function Home() {
                   }
                   sx={{
                     borderRadius: "8px",
-                    border: "1px solid rgba(16, 185, 129, 0.3)",
-                    color: "rgba(110, 231, 183, 0.75)",
-                    px: 7,
+                    border: `1px solid rgba(${accentRgb}, 0.3)`,
+                    color: `rgba(${accentRgb === "16, 185, 129" ? "110, 231, 183" : "129, 140, 248"}, 0.85)`,
+                    px: 2,
                     py: 2,
+                    width: "155px",
                     fontSize: "1.0rem",
                     fontWeight: 500,
-                    background: "rgba(16, 185, 129, .05)",
+                    background: `rgba(${accentRgb}, 0.05)`,
                     "&:hover": {
-                      background: "rgba(16, 185, 129, 0.12)",
-                      borderColor: "#6ee7b7",
-                      color: "#6ee7b7",
+                      background: `rgba(${accentRgb}, 0.12)`,
+                      borderColor: accent,
+                      color: accent,
                     },
                     transition: "all 0.2s ease",
                   }}
@@ -447,7 +477,9 @@ export default function Home() {
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
         >
-          <ArrowDownwardIcon sx={{ color: "rgba(110, 231, 183, 0.4)", fontSize: { xs: 45, md: 75 } }} />
+          <ArrowDownwardIcon
+            sx={{ color: `rgba(${accentRgb}, 0.4)`, fontSize: { xs: 45, md: 75 } }}
+          />
         </motion.div>
       </Box>
 
@@ -471,8 +503,8 @@ export default function Home() {
           <SectionHeading icon={<PersonOutlineIcon fontSize="small" />} label="About Me" />
           <Box
             sx={{
-              background: "rgba(255,255,255,0.025)",
-              border: "1px solid rgba(16, 185, 129, 0.18)",
+              background: cardBg,
+              border: `1px solid ${cardBorder}`,
               borderRadius: "16px",
               p: { xs: 3, sm: 4 },
               backdropFilter: "blur(8px)",
@@ -486,18 +518,18 @@ export default function Home() {
                 fontSize: "1.05rem",
               }}
             >
-              Hi, I'm Josh. My journey into technology started in elementary school, where I was the "go-to" 
-              student for troubleshooting classroom tech issues. That early curiosity evolved into a passion 
-              for software engineering - a field that allows me to build impactful tools from the ground up 
-              and deploy them to the world with a single click. Today, as a driven software engineer, I focus 
-              on creating seamless digital experiences and solving complex problems with clean code. I'm always 
+              Hi, I'm Josh. My journey into technology started in elementary school, where I was the "go-to"
+              student for troubleshooting classroom tech issues. That early curiosity evolved into a passion
+              for software engineering - a field that allows me to build impactful tools from the ground up
+              and deploy them to the world with a single click. Today, as a driven software engineer, I focus
+              on creating seamless digital experiences and solving complex problems with clean code. I'm always
               looking for the next challenge to build, learn, and grow from. Thanks for stopping by!
             </Typography>
           </Box>
         </motion.div>
       </Box>
 
-      <Divider sx={{ width: "100%", maxWidth: 860, borderColor: "rgba(16, 185, 129, 0.12)" }} />
+      <Divider sx={{ width: "100%", maxWidth: 860, borderColor: `rgba(${accentRgb}, 0.12)` }} />
 
       {/* ── EXPERIENCE ── */}
       <Box
@@ -531,15 +563,15 @@ export default function Home() {
             >
               <Box
                 sx={{
-                  background: "rgba(255,255,255,0.025)",
-                  border: "1px solid rgba(16, 185, 129, 0.18)",
+                  background: cardBg,
+                  border: `1px solid ${cardBorder}`,
                   borderRadius: "16px",
                   p: { xs: 3, sm: 4 },
                   backdropFilter: "blur(8px)",
                   transition: "border-color 0.25s ease, box-shadow 0.25s ease",
                   "&:hover": {
-                    borderColor: "rgba(16, 185, 129, 0.4)",
-                    boxShadow: "0 4px 32px rgba(16, 185, 129, 0.1)",
+                    borderColor: `rgba(${accentRgb}, 0.4)`,
+                    boxShadow: `0 4px 32px rgba(${accentRgb}, 0.1)`,
                   },
                 }}
               >
@@ -554,10 +586,10 @@ export default function Home() {
                   }}
                 >
                   <Box>
-                    <Typography variant="h6" fontWeight={700} sx={{ color: "#e2e8f0" }}>
+                    <Typography variant="h6" fontWeight={700} sx={{ color: headingText }}>
                       {job.role}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: "#6ee7b7", fontWeight: 500 }}>
+                    <Typography variant="body2" sx={{ color: accent, fontWeight: 500 }}>
                       {job.company}
                     </Typography>
                   </Box>
@@ -565,8 +597,8 @@ export default function Home() {
                     label={job.period}
                     size="small"
                     sx={{
-                      background: "rgba(16, 185, 129, 0.1)",
-                      border: "1px solid rgba(16, 185, 129, 0.25)",
+                      background: `rgba(${accentRgb}, 0.1)`,
+                      border: `1px solid rgba(${accentRgb}, 0.25)`,
                       color: "text.secondary",
                       fontWeight: 500,
                       fontSize: "0.75rem",
@@ -584,7 +616,7 @@ export default function Home() {
                         lineHeight: 1.8,
                         fontSize: "0.95rem",
                         mb: 0.5,
-                        "&::marker": { color: "rgba(16, 185, 129, 0.5)" },
+                        "&::marker": { color: `rgba(${accentRgb}, 0.5)` },
                       }}
                     >
                       {b}
@@ -597,7 +629,7 @@ export default function Home() {
         </Box>
       </Box>
 
-      <Divider sx={{ width: "100%", maxWidth: 860, borderColor: "rgba(16, 185, 129, 0.12)" }} />
+      <Divider sx={{ width: "100%", maxWidth: 860, borderColor: `rgba(${accentRgb}, 0.12)` }} />
 
       {/* ── EDUCATION ── */}
       <Box
@@ -619,8 +651,8 @@ export default function Home() {
           <SectionHeading icon={<SchoolOutlinedIcon fontSize="small" />} label="Education" />
           <Box
             sx={{
-              background: "rgba(255,255,255,0.025)",
-              border: "1px solid rgba(16, 185, 129, 0.18)",
+              background: cardBg,
+              border: `1px solid ${cardBorder}`,
               borderRadius: "16px",
               p: { xs: 3, sm: 4 },
               backdropFilter: "blur(8px)",
@@ -631,16 +663,16 @@ export default function Home() {
               gap: 2,
               transition: "border-color 0.25s ease, box-shadow 0.25s ease",
               "&:hover": {
-                borderColor: "rgba(16, 185, 129, 0.4)",
-                boxShadow: "0 4px 32px rgba(16, 185, 129, 0.1)",
+                borderColor: `rgba(${accentRgb}, 0.4)`,
+                boxShadow: `0 4px 32px rgba(${accentRgb}, 0.1)`,
               },
             }}
           >
             <Box>
-              <Typography variant="h6" fontWeight={700} sx={{ color: "#e2e8f0" }}>
+              <Typography variant="h6" fontWeight={700} sx={{ color: headingText }}>
                 California Polytechnic State University, Pomona
               </Typography>
-              <Typography variant="body2" sx={{ color: "#6ee7b7", fontWeight: 500, mt: 0.5 }}>
+              <Typography variant="body2" sx={{ color: accent, fontWeight: 500, mt: 0.5 }}>
                 B.S. Computer Science &nbsp;·&nbsp; Minor: Data Science
               </Typography>
             </Box>
@@ -648,8 +680,8 @@ export default function Home() {
               label="Spring 2024"
               size="small"
               sx={{
-                background: "rgba(16, 185, 129, 0.1)",
-                border: "1px solid rgba(16, 185, 129, 0.25)",
+                background: `rgba(${accentRgb}, 0.1)`,
+                border: `1px solid rgba(${accentRgb}, 0.25)`,
                 color: "text.secondary",
                 fontWeight: 500,
                 fontSize: "0.75rem",
@@ -660,7 +692,7 @@ export default function Home() {
         </motion.div>
       </Box>
 
-      <Divider sx={{ width: "100%", maxWidth: 860, borderColor: "rgba(16, 185, 129, 0.12)" }} />
+      <Divider sx={{ width: "100%", maxWidth: 860, borderColor: `rgba(${accentRgb}, 0.12)` }} />
 
       {/* ── SKILLS ── */}
       <Box
@@ -694,8 +726,8 @@ export default function Home() {
             >
               <Box
                 sx={{
-                  background: "rgba(255,255,255,0.025)",
-                  border: "1px solid rgba(16, 185, 129, 0.18)",
+                  background: cardBg,
+                  border: `1px solid ${cardBorder}`,
                   borderRadius: "16px",
                   p: { xs: 3, sm: 4 },
                   backdropFilter: "blur(8px)",
@@ -704,7 +736,7 @@ export default function Home() {
                 <Typography
                   variant="overline"
                   sx={{
-                    color: "rgba(110, 231, 183, 0.7)",
+                    color: isDark ? "rgba(110, 231, 183, 0.7)" : "rgba(79, 70, 229, 0.8)",
                     letterSpacing: 2,
                     fontSize: "0.7rem",
                     fontWeight: 600,
@@ -720,14 +752,14 @@ export default function Home() {
                       key={item}
                       label={item}
                       sx={{
-                        background: "rgba(16, 185, 129, 0.08)",
-                        border: "1px solid rgba(16, 185, 129, 0.22)",
-                        color: "#a7f3d0",
+                        background: isDark ? `rgba(${accentRgb}, 0.08)` : "transparent",
+                        border: `1px solid rgba(${accentRgb}, 0.22)`,
+                        color: accent,
                         fontWeight: 500,
                         fontSize: "0.82rem",
                         "&:hover": {
-                          background: "rgba(16, 185, 129, 0.18)",
-                          borderColor: "#6ee7b7",
+                          background: `rgba(${accentRgb}, 0.1)`,
+                          borderColor: accent,
                         },
                         transition: "all 0.2s ease",
                         cursor: "default",

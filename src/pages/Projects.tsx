@@ -1,5 +1,6 @@
 import { Box, Typography, Card, CardContent, CardActions, Button, Chip, Stack } from "@mui/material";
 import { motion } from "framer-motion";
+import { useTheme } from "@mui/material/styles";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 
@@ -30,7 +31,6 @@ const projects = [
     link: "https://joshjenkinsdev.github.io",
     accentGradient: "linear-gradient(135deg, #06b6d4, #10b981)",
   },
-
 ];
 
 const containerVariants = {
@@ -44,6 +44,23 @@ const cardVariants = {
 };
 
 export default function Projects() {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
+
+  const accent = isDark ? "#6ee7b7" : "#818cf8";
+  const accentSecondary = isDark ? "#06b6d4" : "#0ea5e9";
+  const accentSecondaryHover = isDark ? "#67e8f9" : "#38bdf8";
+  const accentRgb = isDark ? "16, 185, 129" : "79, 70, 229";
+  const headingGradient = isDark
+    ? "linear-gradient(135deg, #e2e8f0 0%, #10b981 20%)"
+    : "linear-gradient(135deg, #0f172a 0%, #4f46e5 20%)";
+  const cardBg = isDark ? "rgba(19, 19, 26, 0.85)" : "rgba(253, 248, 241, 0.92)";
+  const cardBorder = isDark ? "rgba(16, 185, 129, 0.15)" : "rgba(79, 70, 229, 0.15)";
+  const cardBorderHover = isDark ? "rgba(16, 185, 129, 0.4)" : "rgba(79, 70, 229, 0.4)";
+  const cardShadowHover = isDark
+    ? "0 24px 60px rgba(16, 185, 129, 0.15)"
+    : "0 24px 60px rgba(79, 70, 229, 0.12)";
+
   return (
     <Box sx={{ maxWidth: 1100, mx: "auto", px: { xs: 2, sm: 4 }, py: 10 }}>
       <motion.div
@@ -63,7 +80,7 @@ export default function Projects() {
           sx={{
             mt: 0.5,
             mb: 1,
-            background: "linear-gradient(135deg, #e2e8f0 40%, #6ee7b7 100%)",
+            background: headingGradient,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -94,16 +111,16 @@ export default function Projects() {
                 width: "100%",
                 display: "flex",
                 flexDirection: "column",
-                background: "rgba(19, 19, 26, 0.85)",
-                border: "1px solid rgba(16, 185, 129, 0.15)",
+                background: cardBg,
+                border: `1px solid ${cardBorder}`,
                 backdropFilter: "blur(12px)",
                 position: "relative",
                 overflow: "hidden",
                 transition: "all 0.3s ease",
                 "&:hover": {
-                  border: "1px solid rgba(16, 185, 129, 0.4)",
+                  border: `1px solid ${cardBorderHover}`,
                   transform: "translateY(-8px)",
-                  boxShadow: "0 24px 60px rgba(16, 185, 129, 0.2)",
+                  boxShadow: cardShadowHover,
                 },
                 "&::before": {
                   content: '""',
@@ -137,8 +154,8 @@ export default function Projects() {
                       label={t}
                       size="small"
                       sx={{
-                        background: "rgba(16, 185, 129, 0.08)",
-                        border: "1px solid rgba(16, 185, 129, 0.2)",
+                        background: `rgba(${accentRgb}, 0.08)`,
+                        border: `1px solid rgba(${accentRgb}, 0.2)`,
                         color: "text.secondary",
                         fontSize: "0.72rem",
                         height: 24,
@@ -155,11 +172,14 @@ export default function Projects() {
                   rel="noopener noreferrer"
                   endIcon={<OpenInNewIcon sx={{ fontSize: "0.9rem !important" }} />}
                   sx={{
-                    color: "#6ee7b7",
+                    color: accent,
                     fontWeight: 600,
                     fontSize: "0.85rem",
                     p: 0,
-                    "&:hover": { color: "#a7f3d0", background: "transparent" },
+                    "&:hover": {
+                      color: isDark ? "#a7f3d0" : "#c7d2fe",
+                      background: "transparent",
+                    },
                     transition: "color 0.2s ease",
                   }}
                 >
@@ -173,12 +193,12 @@ export default function Projects() {
                     rel="noopener noreferrer"
                     startIcon={<PlayCircleOutlineIcon sx={{ fontSize: "1rem !important" }} />}
                     sx={{
-                      color: "#06b6d4",
+                      color: accentSecondary,
                       fontWeight: 600,
                       fontSize: "0.85rem",
                       p: 0,
                       ml: 1,
-                      "&:hover": { color: "#67e8f9", background: "transparent" },
+                      "&:hover": { color: accentSecondaryHover, background: "transparent" },
                       transition: "color 0.2s ease",
                     }}
                   >

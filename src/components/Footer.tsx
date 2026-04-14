@@ -1,13 +1,23 @@
 import { Box, Typography, IconButton, Stack } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { useTheme } from "@mui/material/styles";
 
 export default function Footer() {
+  const theme = useTheme();
+  const isDark = theme.palette.mode === "dark";
+
+  const accent = isDark ? "#6ee7b7" : "#818cf8";
+  const accentRgb = isDark ? "16, 185, 129" : "79, 70, 229";
+  const nameGradient = isDark
+    ? "linear-gradient(135deg, #6ee7b7, #34d399)"
+    : "linear-gradient(135deg, #818cf8, #4f46e5)";
+
   return (
     <Box
       component="footer"
       sx={{
-        borderTop: "1px solid rgba(16, 185, 129, 0.12)",
+        borderTop: `1px solid rgba(${accentRgb}, 0.12)`,
         py: 4,
         px: 3,
       }}
@@ -26,7 +36,7 @@ export default function Footer() {
         <Typography
           variant="body2"
           sx={{
-            background: "linear-gradient(135deg, #6ee7b7, #34d399)",
+            background: nameGradient,
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
             backgroundClip: "text",
@@ -47,7 +57,7 @@ export default function Footer() {
             size="small"
             sx={{
               color: "text.secondary",
-              "&:hover": { color: "#6ee7b7" },
+              "&:hover": { color: accent },
               transition: "color 0.2s ease",
             }}
           >
@@ -60,7 +70,7 @@ export default function Footer() {
             size="small"
             sx={{
               color: "text.secondary",
-              "&:hover": { color: "#6ee7b7" },
+              "&:hover": { color: accent },
               transition: "color 0.2s ease",
             }}
           >

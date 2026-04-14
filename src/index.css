@@ -4,9 +4,6 @@
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-  color-scheme: dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #0a0a0f;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -21,27 +18,10 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow-x: hidden;
-  background-color: #0a0a0f;
 }
 
 a {
-  color: #6ee7b7;
   text-decoration: none;
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  background: #0a0a0f;
-}
-::-webkit-scrollbar-thumb {
-  background: #059669;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #6ee7b7;
 }
 
 /* Keyframe animations */
@@ -50,7 +30,12 @@ a {
   50% { transform: translateY(-20px); }
 }
 
-@keyframes pulse-glow {
+@keyframes pulse-glow-dark {
   0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
   50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.6), 0 0 80px rgba(52, 211, 153, 0.2); }
+}
+
+@keyframes pulse-glow-light {
+  0%, 100% { box-shadow: 0 0 20px rgba(79, 70, 229, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(79, 70, 229, 0.5), 0 0 80px rgba(129, 140, 248, 0.2); }
 }
