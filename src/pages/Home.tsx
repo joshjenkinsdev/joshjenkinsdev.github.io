@@ -24,15 +24,15 @@ const SKILLS = [
 const SKILL_GROUPS = [
   {
     label: "Languages",
-    items: ["Python", "TypeScript", "JavaScript", "Java", "C#", "SQL", "C"],
+    items: ["Python", "TypeScript", "JavaScript", "Java", "C#", "SQL", "C", "Bash"],
   },
   {
     label: "Frameworks & Libraries",
-    items: ["Django", "Django REST Framework", "React", "Angular", "Flask", "Node.js", "PyTorch", "TensorFlow"],
+    items: ["Django", "Django REST Framework", "React", "Node.js", "Angular", "Flask", "Redis", "PyTorch", "TensorFlow",],
   },
   {
     label: "Infrastructure & Tools",
-    items: ["Docker", "PostgreSQL", "AWS (EC2, RDS, Amplify)", "Azure", "Celery", "Git"],
+    items: ["Docker", "PostgreSQL", "AWS (EC2, RDS, Amplify)", "Azure", "Celery", "Git", "Playwright"],
   },
   {
     label: "Concepts",
@@ -46,9 +46,10 @@ const EXPERIENCE = [
     company: "Drund",
     period: "Jul 2024 – Mar 2026",
     bullets: [
-      "Built and maintained production-grade RESTful APIs using Django REST Framework in a containerized environment backed by Docker and PostgreSQL.",
-      "Led cross-team handoffs, coordinated meetings and technical guides shared with engineering stakeholders with a focus on end-user experience.",
+      "Built and maintained production-grade RESTful APIs using Django REST Framework for high-traffic B2C platforms including Liverpool FC's rewards platform and Perfect Game's scoring system.",
+      "Resolved widespread N+1 query issues across the codebase using Django ORM optimization, reducing database query volume by over 50% and improving API response times across high-traffic endpoints.",
       "Developed Stripe payment integration across client-facing applications, including 3D Secure authentication flows.",
+      "Led cross-team handoffs, coordinated meetings and technical guides shared with engineering stakeholders with a focus on end-user experience.",
       "Investigated and resolved production issues, prioritizing client-facing reliability and system stability.",
     ],
   },
@@ -57,7 +58,7 @@ const EXPERIENCE = [
     company: "Naval Sea Systems Command (NAVSEA)",
     period: "Jun 2023 – Aug 2023",
     bullets: [
-      "Delivered full-stack features in an Agile workflow using Angular, React, Node.js, C#, and SQL across internal defense applications.",
+      "Delivered full-stack features in an Agile workflow using Angular, React, Node.js, C#, and SQL across 5 internal defense web applications.",
       "Spearheaded Playwright integration for automated end-to-end testing, improving deployment confidence.",
       "Managed version control via Azure DevOps and presented technical progress to organizational stakeholders.",
       "Obtained a government-issued security clearance to work with sensitive systems and data.",
@@ -68,7 +69,7 @@ const EXPERIENCE = [
     company: "Infrared Processing & Analysis Center (IPAC) at Caltech",
     period: "May 2022 – Aug 2022",
     bullets: [
-      "Automated data processing workflows using Python scripts and C programs, reducing manual effort for the IT team.",
+      "Automated directory scaffolding for new image processing jobs using Python scripts, eliminating the manual creation of directories and subdirectories per image and reducing repetitive overhead for the IT team.",
       "Maintained physical servers and local network infrastructure in a research computing environment using UNIX system administration practices.",
     ],
   },
@@ -335,10 +336,12 @@ export default function Home() {
                 mx: "auto",
                 lineHeight: 1.8,
                 fontSize: "1.05rem",
+                textAlign: "justify",
               }}
             >
-              Versatile software engineer with production experience in defense contracting,
-              academic research, and commercial product development.
+              Backend-leaning full stack engineer with 2+ years of production experience across SaaS products, defense 
+              contracting, and research computing. Specializes in Python/Django RESTful APIs, TypeScript/React frontends, 
+              and AI/ML integration.
             </Typography>
           </motion.div>
 
