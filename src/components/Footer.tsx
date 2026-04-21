@@ -64,7 +64,7 @@ export default function Footer() {
             <GitHubIcon fontSize="small" />
           </IconButton>
           <IconButton
-            href="https://www.linkedin.com/in/joshjenkins2/"
+            href="https://www.linkedin.com/in/joshjenkinsdev/"
             target="_blank"
             rel="noopener noreferrer"
             size="small"
