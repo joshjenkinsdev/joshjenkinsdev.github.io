@@ -339,9 +339,9 @@ export default function Home() {
                 textAlign: "justify",
               }}
             >
-              Backend-leaning full stack engineer with 2+ years of production experience across SaaS products, defense 
-              contracting, and research computing. Specializes in Python/Django RESTful APIs, TypeScript/React frontends, 
-              and AI/ML integration.
+              Backend-leaning full stack software engineer with 2+ years of production experience across SaaS products, 
+              defense contracting, and research computing. Specializes in Python/Django RESTful APIs, TypeScript/React 
+              frontends, and AI/ML integration.
             </Typography>
           </motion.div>
 
