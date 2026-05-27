@@ -1,6 +1,6 @@
-# Josh Jenkins Portfolio
+# Portfolio Website
 
-Welcome to my personal portfolio website built with **React**, **TypeScript**, **Vite**, and **Material UI (MUI)**.
+Welcome to my personal [portfolio website](https://joshjenkinsdev.github.io/) built with **React**, **TypeScript**, **Vite**, and **Material UI (MUI)**.
 It showcases my projects, skills, and experience as a full-stack developer.
 
 ## Features
