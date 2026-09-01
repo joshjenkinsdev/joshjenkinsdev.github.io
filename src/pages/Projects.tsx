@@ -31,6 +31,14 @@ const projects = [
     link: "https://joshjenkinsdev.github.io",
     accentGradient: "linear-gradient(135deg, #06b6d4, #10b981)",
   },
+  {
+    name: "Minecraft Server Status Bot",
+    description:
+      "A Discord bot that monitors a Minecraft Java server and displays live status as its presence, showing player count when online and flagging when the server goes down.",
+    tech: ["Python", "discord.py", "mcstatus"],
+    link: "https://github.com/joshjenkinsdev/minecraft-server-status-bot",
+    accentGradient: "linear-gradient(135deg, #eab308, #22c55e)",
+  },
 ];
 
 const containerVariants = {
