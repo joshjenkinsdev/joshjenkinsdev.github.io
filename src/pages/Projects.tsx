@@ -10,7 +10,7 @@ const projects = [
     description:
       "Full-stack job application tracker with AI-powered resume analysis and cover letter generation. Built with React, Node.js, PostgreSQL, and Claude AI API - all deployed on AWS.",
     tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "AWS", "AI"],
-    link: "https://main.d11b8apz1u5a7z.amplifyapp.com/",
+    link: "https://github.com/joshjenkinsdev/job-application-web-app",
     demo: "https://www.youtube.com/watch?v=Oy5rgscOAbM",
     accentGradient: "linear-gradient(135deg, #f59e0b, #ef4444)",
   },
